@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <%= @post.name %>
+</p>
+
+<p>
+  <%= @post.body %>
+</p>
+<% if @post.code != "" %>
+<p>
+  <%= raw @post.code %>
+</p>
+<%end%>
+<% if @post.link != ""%>
+<p>
+  <b>Link:</b>
+  <a href="<%= @post.link %>" target="_blank"><%= @post.link %></a>
+</p>
+<%end%>
+
+<% if cookies[:clark] != nil %>
+<%= link_to 'Edit', edit_post_path(@post) %> |<%end%>
+<%= link_to 'Back', posts_path %>

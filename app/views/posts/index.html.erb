@@ -1,0 +1,27 @@
+
+<br>
+<%= link_to :order => 'name' do %>Sort by Name<% end %> | <%= link_to :order => 'date' do %>Most Recent<%end%><br><br>
+<table>
+  <tr>
+    <th width="200"><center>Guidelines</center></th>
+    <% if cookies[:clark] != nil %>
+    <th></th>
+    <th></th>
+    <%end%>
+  </tr>
+
+<% @posts.each do |post| %>
+  <tr>
+    <td><center><%= link_to post do%><%= post.name %><% end %></center></td>
+    <% if cookies[:clark] != nil %>
+    <td><%= link_to 'Edit', edit_post_path(post) %></td>
+    <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <%end%>
+  </tr>
+<% end %>
+</table>
+
+<br />
+<% if cookies[:clark] != nil %>
+<%= link_to 'New Post', new_post_path %>
+<%end%>
